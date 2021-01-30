@@ -31,4 +31,10 @@ describe('Player name', () => {
         expect(component.find('#player1').prop('value')).toContain('Player 1');
         expect(component.find('#player2').prop('value')).toContain('Player 2');
     })
+
+    test('should say player1\'s turn by default', () => {
+        const component = shallow(<App/>);
+
+        expect(component.find('#turn').text()).toContain('Player 1\'s turn');
+    });
 })
