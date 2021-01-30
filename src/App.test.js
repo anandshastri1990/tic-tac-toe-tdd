@@ -45,6 +45,14 @@ describe('Player name', () => {
 
         expect(component.find('#turn').text()).toContain('Custom name 1\'s turn');
     });
+
+    it('should show player 2\'s turn once player 1 selects a box', function () {
+        const component = shallow(<App/>);
+
+        component.find('#game-board').find('#box-2').simulate('click');
+
+        expect(component.find('#turn').text()).toContain('Player 2\'s turn');
+    });
 })
 
 describe('Game board', () => {
