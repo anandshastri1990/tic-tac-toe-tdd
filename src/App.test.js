@@ -37,4 +37,12 @@ describe('Player name', () => {
 
         expect(component.find('#turn').text()).toContain('Player 1\'s turn');
     });
+
+    test('should show the newly set player name when updated by player', () => {
+        const component = shallow(<App/>);
+
+        component.find('#player1').simulate('change', {target: {value: 'Custom name 1'}})
+
+        expect(component.find('#turn').text()).toContain('Custom name 1\'s turn');
+    });
 })
