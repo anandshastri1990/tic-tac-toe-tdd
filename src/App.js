@@ -19,6 +19,10 @@ export class App extends React.Component {
                    onChange={($event) => {
                        this.setState({player2Name: $event.target.value})
                    }}/>
+
+            <div id={"turn"}>
+                Player 1's turn
+            </div>
         </div>
     }
 }
