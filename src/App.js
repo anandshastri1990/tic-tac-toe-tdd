@@ -2,7 +2,7 @@ import './App.css';
 import React from "react";
 
 export class App extends React.Component {
-    state = {player1Name: "Player 1", player2Name: "Player 2", boxClicked: false}
+    state = {player1Name: "Player 1", player2Name: "Player 2", boxClicked: false, player1Turn: true}
 
     render() {
         return <div>
@@ -21,12 +21,12 @@ export class App extends React.Component {
                    }}/>
 
             <div id={"turn"}>
-                {this.state.player1Name + "'s turn"}
+                {this.state.player1Turn ? (this.state.player1Name + "'s turn") : (this.state.player2Name + "'s turn")}
             </div>
 
             <div id="game-board">
                 <div id={"box-1"} onClick={() => this.onBoxClicked()}>{this.state.boxClicked ? 'X' : ''}</div>
-                <div id={"box-2"}/>
+                <div id={"box-2"} onClick={() => this.onBoxClicked()}/>
                 <div id={"box-3"}/>
                 <div id={"box-4"}/>
                 <div id={"box-5"}/>
@@ -40,7 +40,7 @@ export class App extends React.Component {
     }
 
     onBoxClicked() {
-        this.setState({boxClicked: true})
+        this.setState((prevState) => ({boxClicked: true, player1Turn: !prevState.player1Turn}));
     }
 }
 
