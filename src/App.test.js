@@ -25,20 +25,20 @@ describe('Player name', () => {
         expect(component.find('#player2').prop('value')).toContain('Custom name 2');
     });
 
-    test('should default player1 and player2 name', () => {
+    it('should default player1 and player2 name', () => {
         const component = shallow(<App/>);
 
         expect(component.find('#player1').prop('value')).toContain('Player 1');
         expect(component.find('#player2').prop('value')).toContain('Player 2');
     })
 
-    test('should say player1\'s turn by default', () => {
+    it('should say player1\'s turn by default', () => {
         const component = shallow(<App/>);
 
         expect(component.find('#turn').text()).toContain('Player 1\'s turn');
     });
 
-    test('should show the newly set player name when updated by player', () => {
+    it('should show the newly set player name when updated by player', () => {
         const component = shallow(<App/>);
 
         component.find('#player1').simulate('change', {target: {value: 'Custom name 1'}})
@@ -46,3 +46,11 @@ describe('Player name', () => {
         expect(component.find('#turn').text()).toContain('Custom name 1\'s turn');
     });
 })
+
+it('should contain a game board with 9 boxes', function () {
+    const component = shallow(<App/>);
+
+    for (let i = 1; i <= 9; i++) {
+        expect(component.find('#game-board').find('#box-' + i)).toHaveLength(1);
+    }
+});
