@@ -2,7 +2,7 @@ import './App.css';
 import React from "react";
 
 export class App extends React.Component {
-    state = {player1Name: "Player 1", player2Name: "Player 2"}
+    state = {player1Name: "Player 1", player2Name: "Player 2", boxClicked: false}
 
     render() {
         return <div>
@@ -25,7 +25,7 @@ export class App extends React.Component {
             </div>
 
             <div id="game-board">
-                <div id={"box-1"}/>
+                <div id={"box-1"} onClick={() => this.onBoxClicked()}>{this.state.boxClicked ? 'X' : ''}</div>
                 <div id={"box-2"}/>
                 <div id={"box-3"}/>
                 <div id={"box-4"}/>
@@ -37,6 +37,10 @@ export class App extends React.Component {
             </div>
 
         </div>
+    }
+
+    onBoxClicked() {
+        this.setState({boxClicked: true})
     }
 }
 
