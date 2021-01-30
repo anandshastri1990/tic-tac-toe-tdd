@@ -47,10 +47,21 @@ describe('Player name', () => {
     });
 })
 
-it('should contain a game board with 9 boxes', function () {
-    const component = shallow(<App/>);
+describe('Game board', () => {
+    it('should contain a game board with 9 boxes', function () {
+        const component = shallow(<App/>);
 
-    for (let i = 1; i <= 9; i++) {
-        expect(component.find('#game-board').find('#box-' + i)).toHaveLength(1);
-    }
+        for (let i = 1; i <= 9; i++) {
+            expect(component.find('#game-board').find('#box-' + i)).toHaveLength(1);
+        }
+    });
+
+    it('should show X mark when clicked on a box', () => {
+        const component = shallow(<App/>);
+        expect(component.find('#game-board').find('#box-1').text()).not.toEqual('X');
+
+        component.find('#game-board').find('#box-1').simulate('click');
+
+        expect(component.find('#game-board').find('#box-1').text()).toEqual('X');
+    })
 });
