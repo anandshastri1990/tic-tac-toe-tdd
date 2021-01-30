@@ -24,4 +24,11 @@ describe('Player name', () => {
 
         expect(component.find('#player2').prop('value')).toContain('Custom name 2');
     });
+
+    test('should default player1 and player2 name', () => {
+        const component = shallow(<App/>);
+
+        expect(component.find('#player1').prop('value')).toContain('Player 1');
+        expect(component.find('#player2').prop('value')).toContain('Player 2');
+    })
 })
