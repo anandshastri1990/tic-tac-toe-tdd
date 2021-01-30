@@ -23,6 +23,19 @@ export class App extends React.Component {
             <div id={"turn"}>
                 {this.state.player1Name + "'s turn"}
             </div>
+
+            <div id="game-board">
+                <div id={"box-1"}/>
+                <div id={"box-2"}/>
+                <div id={"box-3"}/>
+                <div id={"box-4"}/>
+                <div id={"box-5"}/>
+                <div id={"box-6"}/>
+                <div id={"box-7"}/>
+                <div id={"box-8"}/>
+                <div id={"box-9"}/>
+            </div>
+
         </div>
     }
 }
