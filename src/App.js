@@ -2,7 +2,7 @@ import './App.css';
 import React from "react";
 
 export class App extends React.Component {
-    state = {player1Name: "", player2Name: ""}
+    state = {player1Name: "Player 1", player2Name: "Player 2"}
 
     render() {
         return <div>
