@@ -1,9 +1,10 @@
 import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div/>
-  );
+export class App extends React.Component {
+    render() {
+        return <div id={"header"}>Tic Tac Toe</div>
+    }
 }
 
 export default App;
