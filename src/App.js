@@ -21,7 +21,7 @@ export class App extends React.Component {
                    }}/>
 
             <div id={"turn"}>
-                Player 1's turn
+                {this.state.player1Name + "'s turn"}
             </div>
         </div>
     }
