@@ -1,0 +1,95 @@
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    text-align: center;
+    font-size: 3em;
+}
+
+.app {
+    background-color: #282c34;
+    min-height: 100vh;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.mt-1 {
+    margin-top: 1vh;
+}
+
+.mt-2 {
+    margin-top: 2vh;
+}
+
+.mt-4 {
+    margin-top: 4vh;
+}
+
+.mt-8 {
+    margin-top: 8vh;
+}
+
+.mb-2 {
+    margin-bottom: 2vh;
+}
+
+.mb-4 {
+    margin-bottom: 4vh;
+}
+
+.mr-5 {
+    margin-right: 5vw;
+}
+
+.ma {
+    margin: auto;
+    text-align: center;
+}
+
+.player-name {
+    text-align: center;
+    border-radius: 10px;
+    border: 0;
+    padding: 15px;
+    font-size: 1em;
+    width: min(10vw, 150px);
+}
+
+.button {
+    padding: 15px;
+    background-color: white;
+    color: black;
+    border-radius: 12px;
+    cursor: pointer;
+
+}
+
+.game-info {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.row {
+    display: table;
+    table-layout: fixed;
+}
+
+.column {
+    float: left;
+}
+
+.box {
+    color: #282c34;
+    border: 1px solid black;
+    text-align: center;
+    width: 8vmax;
+    height: 8vmax;
+    max-width: 100px;
+    max-height: 100px;
+    font-size: min(5vmax, 75px);
+    float: left;
+    background-color: white;
+}

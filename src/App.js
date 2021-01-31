@@ -17,8 +17,8 @@ export class App extends React.Component {
     }
 
     render() {
-        return <div>
-            <div id={"header"}>Tic Tac Toe</div>
+        return <div className="app">
+            <div id={"header"} className="header mb-4">Tic Tac Toe</div>
 
             <PlayerInfo gameStatus={this.state.gameStatus}
                         player1Turn={this.state.player1Turn}/>
@@ -26,14 +26,17 @@ export class App extends React.Component {
             <GameBoard onClick={(indexOfBox) => this.onBoxClicked(indexOfBox)}
                        gameBoard={this.state.gameBoard}/>
 
-            <button id="restart"
-                    onClick={() => this.restartGame()}>Restart game
-            </button>
+            <div className="center mt-8">
+                <span id="restart"
+                      className="button column mr-5"
+                      onClick={() => this.restartGame()}>Restart game
+                </span>
 
-            <button id="undo"
-                    onClick={() => this.undoAMove()}>Undo a move
-            </button>
-
+                <span id="undo"
+                      className="button column"
+                      onClick={() => this.undoAMove()}>Undo a move
+                </span>
+            </div>
         </div>
     }
 

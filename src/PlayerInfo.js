@@ -5,20 +5,22 @@ export function PlayerInfo(props) {
     const [player1Name, setPlayer1Name] = useState('Player 1');
     const [player2Name, setPlayer2Name] = useState('Player 2');
 
-    return <div>
+    return <div className="ma">
         <input id={"player1"}
+               className="player-name mr-5"
                value={player1Name}
                onChange={($event) => {
                    setPlayer1Name($event.target.value)
                }}/>
 
         <input id={"player2"}
+               className="player-name"
                value={player2Name}
                onChange={($event) => {
                    setPlayer2Name($event.target.value)
                }}/>
 
-        {
+        <div className="mt-4 mb-4">{
             props.gameStatus === GAME_STATUS.WON ?
                 <div
                     id={"winner"}> {(props.player1Turn ? player2Name : player1Name) + " won!"}
@@ -29,5 +31,6 @@ export function PlayerInfo(props) {
                     {props.player1Turn ? (player1Name + "'s turn") : (player2Name + "'s turn")}
                 </div>
         }
+        </div>
     </div>
 }
