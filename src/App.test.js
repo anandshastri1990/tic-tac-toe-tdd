@@ -2,6 +2,7 @@ import React from "react";
 import {mount, shallow} from "enzyme";
 import App from "./App";
 import {PLAYER1_TOKEN, PLAYER2_TOKEN} from "./GameManager";
+import {GameBoard} from "./GameBoard";
 
 it('should contain application header Tic Tac Toe', () => {
     const component = shallow(<App/>);
@@ -270,6 +271,22 @@ describe('Game play', () => {
         selectBoxes(component, [8]);
 
         expect(component.find('#game-board').find('#box-8').text()).toEqual('');
+    });
+
+    it('should highlight winning boxes', function () {
+        const component = mount(<App/>);
+
+        selectBoxes(component, [4, 1, 5, 2, 7, 3]);
+
+        expect(component.find('#game-board').find('#box-1').get(0).props.className).toEqual('box highlight-red');
+        expect(component.find('#game-board').find('#box-2').get(0).props.className).toEqual('box highlight-red');
+        expect(component.find('#game-board').find('#box-3').get(0).props.className).toEqual('box highlight-red');
+        expect(component.find('#game-board').find('#box-4').get(0).props.className).toEqual('box');
+        expect(component.find('#game-board').find('#box-5').get(0).props.className).toEqual('box');
+        expect(component.find('#game-board').find('#box-6').get(0).props.className).toEqual('box');
+        expect(component.find('#game-board').find('#box-7').get(0).props.className).toEqual('box');
+        expect(component.find('#game-board').find('#box-8').get(0).props.className).toEqual('box');
+        expect(component.find('#game-board').find('#box-9').get(0).props.className).toEqual('box');
     });
 })
 
