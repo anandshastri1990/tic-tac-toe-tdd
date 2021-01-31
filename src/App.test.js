@@ -61,6 +61,16 @@ describe('Player name', () => {
 
         expect(component.find('#turn').text()).toContain('Player 2\'s turn');
     });
+
+    it('should not show player\'s turn info once a player wins the game', function () {
+        const component = mount(<App/>);
+
+        expect(component.find('#winner')).toHaveLength(0);
+
+        selectBoxes(component, [4, 1, 5, 2, 7, 3]);
+
+        expect(component.find('#turn')).toHaveLength(0);
+    });
 })
 
 describe('Game board', () => {
