@@ -1,6 +1,7 @@
 import './App.css';
 import React from "react";
 import {GameBoard} from "./GameBoard";
+import {isWinningCombo} from "./GameManager";
 
 export class App extends React.Component {
     state = {
@@ -50,16 +51,12 @@ export class App extends React.Component {
                 {
                     player1Turn: !prevState.player1Turn,
                     gameBoard: gameBoardShallow,
-                    showWinner: this.winningCombo(gameBoardShallow)
+                    showWinner: isWinningCombo(gameBoardShallow)
                 }));
         }
     }
 
-    winningCombo(allBoxes) {
-        return ((allBoxes[0] !== null && allBoxes[0] === allBoxes[1] && allBoxes[0] === allBoxes[2])
-            || (allBoxes[3] !== null && allBoxes[3] === allBoxes[4] && allBoxes[3] === allBoxes[5])
-        );
-    }
+
 }
 
 export default App;
