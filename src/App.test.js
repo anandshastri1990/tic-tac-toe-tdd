@@ -178,10 +178,26 @@ describe('Undo a move', () => {
         selectBoxes(component, [1, 3, 5, 6, 9]);
 
         expect(component.find('#turn')).toHaveLength(0);
+        expect(component.find('#winner')).toHaveLength(1);
 
         component.find('#undo').simulate('click');
 
         expect(component.find('#turn').text()).toContain('Player 1\'s turn');
+        expect(component.find('#winner')).toHaveLength(0);
+    });
+
+    it('should undo player\'s turn info when undo is clicked after game is tied', function () {
+        const component = mount(<App/>);
+
+        selectBoxes(component, [2, 1, 4, 8, 5, 6, 7, 3, 9]);
+
+        expect(component.find('#turn')).toHaveLength(0);
+        expect(component.find('#tie')).toHaveLength(1);
+
+        component.find('#undo').simulate('click');
+
+        expect(component.find('#turn').text()).toContain('Player 1\'s turn');
+        expect(component.find('#tie')).toHaveLength(0);
     });
 });
 
