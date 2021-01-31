@@ -10,7 +10,7 @@ it('should contain application header Tic Tac Toe', () => {
 
 describe('Player name', () => {
     it('should accept player 1 name', () => {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         component.find('#player1').simulate('change', {target: {value: 'Custom name 1'}})
 
@@ -18,7 +18,7 @@ describe('Player name', () => {
     });
 
     it('should accept player 2 name', () => {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         component.find('#player2').simulate('change', {target: {value: 'Custom name 2'}})
 
@@ -26,20 +26,20 @@ describe('Player name', () => {
     });
 
     it('should default player1 and player2 name', () => {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         expect(component.find('#player1').prop('value')).toContain('Player 1');
         expect(component.find('#player2').prop('value')).toContain('Player 2');
     })
 
     it('should say player1\'s turn by default', () => {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         expect(component.find('#turn').text()).toContain('Player 1\'s turn');
     });
 
     it('should show the newly set player name when updated by player', () => {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         component.find('#player1').simulate('change', {target: {value: 'Custom name 1'}})
 
