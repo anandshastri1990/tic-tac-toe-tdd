@@ -27,3 +27,7 @@ it('winning combo 6 - 3rd column', function () {
 it('winning combo 7 - diagonal left to right', function () {
     expect(isWinningCombo(['O', 'X', 'X', null, 'O', 'X', null, null, 'O'])).toEqual(true);
 });
+
+it('winning combo 8 - diagonal right to left', function () {
+    expect(isWinningCombo(['O', 'O', 'X', null, 'X', null, 'X', null, null])).toEqual(true);
+});
