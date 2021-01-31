@@ -161,6 +161,18 @@ describe('Restart Game', () => {
             expect(component.find('#box-' + i).text()).toEqual('');
         }
     });
+
+    test('should not show game winner when game is reset', () => {
+        const component = mount(<App/>);
+
+        selectBoxes(component, [1, 3, 5, 6, 9]);
+
+        expect(component.find('#winner')).toHaveLength(1);
+
+        component.find('#restart').simulate('click');
+
+        expect(component.find('#winner')).toHaveLength(0);
+    });
 })
 
 describe('Game play', () => {
