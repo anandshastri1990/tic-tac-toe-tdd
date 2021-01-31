@@ -7,14 +7,14 @@ export function PlayerInfo(props) {
 
     return <div className="ma">
         <input id={"player1"}
-               className="player-name mr-5"
+               className="player-name bg-teal mr-5"
                value={player1Name}
                onChange={($event) => {
                    setPlayer1Name($event.target.value)
                }}/>
 
         <input id={"player2"}
-               className="player-name"
+               className="player-name bg-red"
                value={player2Name}
                onChange={($event) => {
                    setPlayer2Name($event.target.value)
@@ -22,10 +22,10 @@ export function PlayerInfo(props) {
 
         <div className="mt-4 mb-4">{
             props.gameStatus === GAME_STATUS.WON ?
-                <div id={"winner"} className="game-result"> {(props.player1Turn ? player2Name : player1Name) + " won!"}
+                <div id={"winner"} className="win-result blink"> {(props.player1Turn ? player2Name : player1Name) + " won!"}
                 </div>
                 : props.gameStatus === GAME_STATUS.TIE ?
-                <div id={"tie"} className="game-result">It's a tie!</div> :
+                <div id={"tie"} className="tie-result blink">It's a tie!</div> :
                 <div id={"turn"} className="player-instruction">
                     {props.player1Turn ? (player1Name + "'s turn") : (player2Name + "'s turn")}
                 </div>
