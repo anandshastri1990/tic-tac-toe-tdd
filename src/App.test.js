@@ -90,6 +90,12 @@ describe('Restart Game', () => {
         expect(component.find('#restart').text()).toEqual('Restart game');
     });
 
+    it('should contain a restart icon', function () {
+        const component = mount(<App/>);
+
+        expect(component.find('#restart-icon')).toHaveLength(1);
+    });
+
     it('should reset all boxes when clicked on restart game button', () => {
         const component = mount(<App/>);
 
