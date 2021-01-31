@@ -44,6 +44,7 @@ export class App extends React.Component {
         this.setState({
             gameBoard: [null, null, null, null, null, null, null, null, null],
             player1Turn: true,
+            gameStatus: GAME_STATUS.IN_PROGRESS
         })
     }
 
