@@ -48,7 +48,9 @@ export class App extends React.Component {
 
     onBoxClicked(indexOfBox) {
         let gameBoardShallow = [...this.state.gameBoard];
-        gameBoardShallow[indexOfBox] = this.state.player1Turn === true ? 'X' : 'O';
+        if (gameBoardShallow[indexOfBox] === null) {
+            gameBoardShallow[indexOfBox] = this.state.player1Turn === true ? 'X' : 'O';
+        }
         this.setState((prevState) => ({player1Turn: !prevState.player1Turn, gameBoard: gameBoardShallow}));
     }
 }
