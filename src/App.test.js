@@ -53,6 +53,15 @@ describe('Player name', () => {
 
         expect(component.find('#turn').text()).toContain('Player 2\'s turn');
     });
+
+    it('should not switch player\'s turn when clicked on the same box twice', function () {
+        const component = shallow(<App/>);
+
+        component.find('#game-board').find('#box-2').simulate('click');
+        component.find('#game-board').find('#box-2').simulate('click');
+
+        expect(component.find('#turn').text()).toContain('Player 2\'s turn');
+    });
 })
 
 describe('Game board', () => {
