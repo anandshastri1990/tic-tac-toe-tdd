@@ -172,6 +172,14 @@ describe('Undo a move', () => {
         expect(component.find('#box-1').text()).toEqual('');
     });
 
+    it('should ignore undo a move when clicked before any box selection', function () {
+        const component = mount(<App/>);
+
+        component.find('#undo').simulate('click');
+
+        expect(component.find('#box-1').text()).toEqual('');
+    });
+
     it('should undo player\'s turn info when undo is clicked after game is won', function () {
         const component = mount(<App/>);
 
