@@ -128,7 +128,7 @@ describe('Restart Game', () => {
 
         expect(component.find('#winner')).toHaveLength(0);
     });
-})
+});
 
 describe('Game play', () => {
     it('should show winner as Player 1 when player 1 selects 3 boxes in first row', function () {
@@ -169,6 +169,16 @@ describe('Game play', () => {
         selectBoxes(component, [2,1,4,8,5,6,7,3,9]);
 
         expect(component.find('#tie').text().trim()).toEqual('It\'s a tie!')
+    });
+
+    it('should not allow selection of box once game is won by a player', function () {
+        const component = mount(<App/>);
+
+        selectBoxes(component, [4, 1, 5, 2, 7, 3]);
+
+        selectBoxes(component, [8]);
+
+        expect(component.find('#game-board').find('#box-8').text()).toEqual('');
     });
 })
 
