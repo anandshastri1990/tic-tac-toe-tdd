@@ -56,8 +56,9 @@ export class App extends React.Component {
     }
 
     winningCombo(allBoxes) {
-        return ((allBoxes[0] === 'X' && allBoxes[1] === 'X' && allBoxes[2] === 'X')
-            || (allBoxes[3] === 'O' && allBoxes[4] === 'O' && allBoxes[5] === 'O'));
+        return ((allBoxes[0] !== null && allBoxes[0] === allBoxes[1] && allBoxes[0] === allBoxes[2])
+             || (allBoxes[3] !== null && allBoxes[3] === allBoxes[4] && allBoxes[3] === allBoxes[5])
+        );
     }
 }
 
