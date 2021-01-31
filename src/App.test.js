@@ -158,6 +158,31 @@ describe('Undo a move', () => {
         expect(component.find('#box-4').text()).toEqual('');
         expect(component.find('#box-2').text()).toEqual('');
     });
+
+    it('should reset to blank state when undo is clicked after first move', function () {
+        const component = mount(<App/>);
+
+        selectBoxes(component, [1]);
+
+        expect(component.find('#turn').text()).toContain('Player 2\'s turn');
+
+        component.find('#undo').simulate('click');
+
+        expect(component.find('#turn').text()).toContain('Player 1\'s turn');
+        expect(component.find('#box-1').text()).toEqual('');
+    });
+
+    it('should undo player\'s turn info when undo is clicked after game is won', function () {
+        const component = mount(<App/>);
+
+        selectBoxes(component, [1, 3, 5, 6, 9]);
+
+        expect(component.find('#turn')).toHaveLength(0);
+
+        component.find('#undo').simulate('click');
+
+        expect(component.find('#turn').text()).toContain('Player 1\'s turn');
+    });
 });
 
 describe('Game play', () => {
