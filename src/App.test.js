@@ -1,5 +1,5 @@
 import React from "react";
-import {shallow} from "enzyme";
+import {mount, shallow} from "enzyme";
 import App from "./App";
 
 it('should contain application header Tic Tac Toe', () => {
@@ -47,7 +47,7 @@ describe('Player name', () => {
     });
 
     it('should show player 2\'s turn once player 1 selects a box', function () {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         component.find('#game-board').find('#box-2').simulate('click');
 
@@ -55,7 +55,7 @@ describe('Player name', () => {
     });
 
     it('should not switch player\'s turn when clicked on the same box twice', function () {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         component.find('#game-board').find('#box-2').simulate('click');
         component.find('#game-board').find('#box-2').simulate('click');
@@ -66,7 +66,7 @@ describe('Player name', () => {
 
 describe('Game board', () => {
     it('should contain a game board with 9 boxes in total', function () {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         for (let i = 1; i <= 9; i++) {
             expect(component.find('#game-board').find('#box-' + i)).toHaveLength(1);
@@ -74,7 +74,7 @@ describe('Game board', () => {
     });
 
     it('should contain 3 rows with 3 boxes in each', function () {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         for (let i = 1; i <= 3; i++) {
             expect(component.find('#game-board').find('#row-1').find('#box-' + i)).toHaveLength(1);
@@ -88,7 +88,7 @@ describe('Game board', () => {
     });
 
     it('should show X mark when player 1 selects first box', () => {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
         expect(component.find('#game-board').find('#box-1').text()).not.toEqual('X');
 
         component.find('#game-board').find('#box-1').simulate('click');
@@ -97,7 +97,7 @@ describe('Game board', () => {
     });
 
     it('should show O mark when player 2 selects first box', function () {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
         expect(component.find('#game-board').find('#box-2').text()).not.toEqual('X');
 
         component.find('#game-board').find('#box-1').simulate('click');
@@ -107,7 +107,7 @@ describe('Game board', () => {
     });
 
     it('should not switch player\'s token when clicked on the same box twice', function () {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         component.find('#game-board').find('#box-1').simulate('click');
         component.find('#game-board').find('#box-1').simulate('click');
@@ -116,7 +116,7 @@ describe('Game board', () => {
     });
 
     it('should alternate between player\'s token when clicked on different boxes', function () {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         for (let i = 1; i <= 9; i++) {
             component.find('#game-board').find('#box-' + i).simulate('click');
