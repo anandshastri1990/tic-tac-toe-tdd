@@ -14,6 +14,16 @@ describe('Restart Game', () => {
 
         expect(component.find('#restart-icon')).toHaveLength(1);
     });
+
+    it('should call back when clicked on restart button', function () {
+        const mockCallBack = jest.fn();
+
+        const component = shallow(<ControlPanel restartGame={ () => mockCallBack()}/>);
+
+        component.find('#restart-wrapper').simulate('click');
+
+        expect(mockCallBack).toHaveBeenCalledTimes(1);
+    });
 });
 
 describe('Undo a move', () => {
@@ -27,5 +37,15 @@ describe('Undo a move', () => {
         const component = shallow(<ControlPanel/>);
 
         expect(component.find('#undo-icon')).toHaveLength(1);
+    });
+
+    it('should call back when clicked on undo button', function () {
+        const mockCallBack = jest.fn();
+
+        const component = shallow(<ControlPanel undoAMove={ () => mockCallBack()}/>);
+
+        component.find('#undo-wrapper').simulate('click');
+
+        expect(mockCallBack).toHaveBeenCalledTimes(1);
     });
 });
