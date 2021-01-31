@@ -91,7 +91,7 @@ describe('Restart Game', () => {
     });
 
     it('should contain a restart icon', function () {
-        const component = mount(<App/>);
+        const component = shallow(<App/>);
 
         expect(component.find('#restart-icon')).toHaveLength(1);
     });
@@ -126,6 +126,12 @@ describe('Undo a move', () => {
         const component = shallow(<App/>);
 
         expect(component.find('#undo').text()).toEqual('Undo a move');
+    });
+
+    it('should contain a undo icon', function () {
+        const component = shallow(<App/>);
+
+        expect(component.find('#undo-icon')).toHaveLength(1);
     });
 
     it('should undo player\'s selection on clicking undo', function () {
