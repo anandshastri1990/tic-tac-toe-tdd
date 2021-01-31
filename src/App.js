@@ -1,7 +1,7 @@
 import './App.css';
 import React from "react";
 import {GameBoard} from "./GameBoard";
-import {GAME_STATUS, getGameStatus} from "./GameManager";
+import {GAME_STATUS, getGameStatus, PLAYER1_TOKEN, PLAYER2_TOKEN} from "./GameManager";
 import {PlayerInfo} from "./PlayerInfo";
 
 export class App extends React.Component {
@@ -35,7 +35,7 @@ export class App extends React.Component {
     onBoxClicked(indexOfBox) {
         if (this.state.gameBoard[indexOfBox] === null && this.state.gameStatus === GAME_STATUS.IN_PROGRESS) {
             let gameBoardShallow = [...this.state.gameBoard];
-            gameBoardShallow[indexOfBox] = this.state.player1Turn === true ? 'X' : 'O';
+            gameBoardShallow[indexOfBox] = this.state.player1Turn === true ? PLAYER1_TOKEN : PLAYER2_TOKEN;
             this.setState((prevState) => (
                 {
                     player1Turn: !prevState.player1Turn,

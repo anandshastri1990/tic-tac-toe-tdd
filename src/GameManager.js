@@ -22,3 +22,6 @@ export function getGameStatus(allBoxes) {
 export const GAME_STATUS = {
     IN_PROGRESS: 0, WON: 1, TIE: 2
 }
+
+export const PLAYER1_TOKEN = 'X';
+export const PLAYER2_TOKEN = 'O';

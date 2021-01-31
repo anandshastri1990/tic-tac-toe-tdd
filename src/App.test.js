@@ -1,6 +1,7 @@
 import React from "react";
 import {mount, shallow} from "enzyme";
 import App from "./App";
+import {PLAYER1_TOKEN, PLAYER2_TOKEN} from "./GameManager";
 
 it('should contain application header Tic Tac Toe', () => {
     const component = shallow(<App/>);
@@ -63,20 +64,20 @@ describe('Game board', () => {
 
     it('should show X mark when player 1 selects first box', () => {
         const component = mount(<App/>);
-        expect(component.find('#game-board').find('#box-1').text()).not.toEqual('X');
+        expect(component.find('#game-board').find('#box-1').text()).not.toEqual(PLAYER1_TOKEN);
 
         selectBoxes(component, [1]);
 
-        expect(component.find('#game-board').find('#box-1').text()).toEqual('X');
+        expect(component.find('#game-board').find('#box-1').text()).toEqual(PLAYER1_TOKEN);
     });
 
     it('should show O mark when player 2 selects first box', function () {
         const component = mount(<App/>);
-        expect(component.find('#game-board').find('#box-2').text()).not.toEqual('X');
+        expect(component.find('#game-board').find('#box-2').text()).not.toEqual(PLAYER1_TOKEN);
 
         selectBoxes(component, [1, 2]);
 
-        expect(component.find('#game-board').find('#box-2').text()).toEqual('O');
+        expect(component.find('#game-board').find('#box-2').text()).toEqual(PLAYER2_TOKEN);
     });
 
     it('should not switch player\'s token when clicked on the same box twice', function () {
@@ -84,7 +85,7 @@ describe('Game board', () => {
 
         selectBoxes(component, [1, 1])
 
-        expect(component.find('#game-board').find('#box-1').text()).toEqual('X');
+        expect(component.find('#game-board').find('#box-1').text()).toEqual(PLAYER1_TOKEN);
     });
 
     it('should alternate between player\'s token when clicked on different boxes', function () {
@@ -92,15 +93,15 @@ describe('Game board', () => {
 
         selectBoxes(component, [2,1,4,3,5,6,7,8,9]);
 
-        expect(component.find('#game-board').find('#box-1').text()).toEqual('O');
-        expect(component.find('#game-board').find('#box-2').text()).toEqual('X');
-        expect(component.find('#game-board').find('#box-3').text()).toEqual('O');
-        expect(component.find('#game-board').find('#box-4').text()).toEqual('X');
-        expect(component.find('#game-board').find('#box-5').text()).toEqual('X');
-        expect(component.find('#game-board').find('#box-6').text()).toEqual('O');
-        expect(component.find('#game-board').find('#box-7').text()).toEqual('X');
-        expect(component.find('#game-board').find('#box-8').text()).toEqual('O');
-        expect(component.find('#game-board').find('#box-9').text()).toEqual('X');
+        expect(component.find('#game-board').find('#box-1').text()).toEqual(PLAYER2_TOKEN);
+        expect(component.find('#game-board').find('#box-2').text()).toEqual(PLAYER1_TOKEN);
+        expect(component.find('#game-board').find('#box-3').text()).toEqual(PLAYER2_TOKEN);
+        expect(component.find('#game-board').find('#box-4').text()).toEqual(PLAYER1_TOKEN);
+        expect(component.find('#game-board').find('#box-5').text()).toEqual(PLAYER1_TOKEN);
+        expect(component.find('#game-board').find('#box-6').text()).toEqual(PLAYER2_TOKEN);
+        expect(component.find('#game-board').find('#box-7').text()).toEqual(PLAYER1_TOKEN);
+        expect(component.find('#game-board').find('#box-8').text()).toEqual(PLAYER2_TOKEN);
+        expect(component.find('#game-board').find('#box-9').text()).toEqual(PLAYER1_TOKEN);
     });
 });
 
