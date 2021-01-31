@@ -40,28 +40,6 @@ describe('Player name', () => {
 })
 
 describe('Game board', () => {
-    it('should contain a game board with 9 boxes in total', function () {
-        const component = mount(<App/>);
-
-        for (let i = 1; i <= 9; i++) {
-            expect(component.find('#game-board').find('#box-' + i)).toHaveLength(1);
-        }
-    });
-
-    it('should contain 3 rows with 3 boxes in each', function () {
-        const component = mount(<App/>);
-
-        for (let i = 1; i <= 3; i++) {
-            expect(component.find('#game-board').find('#row-1').find('#box-' + i)).toHaveLength(1);
-        }
-        for (let i = 4; i <= 6; i++) {
-            expect(component.find('#game-board').find('#row-2').find('#box-' + i)).toHaveLength(1);
-        }
-        for (let i = 7; i <= 9; i++) {
-            expect(component.find('#game-board').find('#row-3').find('#box-' + i)).toHaveLength(1);
-        }
-    });
-
     it('should show X mark when player 1 selects first box', () => {
         const component = mount(<App/>);
         expect(component.find('#game-board').find('#box-1').text()).not.toEqual(PLAYER1_TOKEN);
