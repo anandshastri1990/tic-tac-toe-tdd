@@ -121,6 +121,18 @@ describe('Undo a move', () => {
 
         expect(component.find('#undo').text()).toEqual('Undo a move');
     });
+
+    it('should undo player\'s selection on clicking undo', function () {
+        const component = mount(<App/>);
+
+        selectBoxes(component, [1, 4, 2]);
+
+        component.find('#undo').simulate('click');
+
+        expect(component.find('#box-1').text()).toEqual('X');
+        expect(component.find('#box-4').text()).toEqual('O');
+        expect(component.find('#box-2').text()).toEqual('');
+    });
 });
 
 describe('Game play', () => {
