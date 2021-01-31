@@ -115,6 +115,14 @@ describe('Restart Game', () => {
     });
 });
 
+describe('Undo a move', () => {
+    it('should contain undo a move button', function () {
+        const component = shallow(<App/>);
+
+        expect(component.find('#undo').text()).toEqual('Undo a move');
+    });
+});
+
 describe('Game play', () => {
     it('should show winner as Player 1 when player 1 selects 3 boxes in first row', function () {
         const component = mount(<App/>);
