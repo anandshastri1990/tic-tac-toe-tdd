@@ -27,14 +27,14 @@ export class App extends React.Component {
                        this.setState({player2Name: $event.target.value})
                    }}/>
 
-            <div id={"turn"}>
-                {this.state.player1Turn ? (this.state.player1Name + "'s turn") : (this.state.player2Name + "'s turn")}
-            </div>
-
             {this.state.showWinner ?
                 <div
                     id={"winner"}> {(this.state.player1Turn ? this.state.player2Name : this.state.player1Name) + " won!"}
-                </div> : <div/>
+                </div>
+                :
+                <div id={"turn"}>
+                    {this.state.player1Turn ? (this.state.player1Name + "'s turn") : (this.state.player2Name + "'s turn")}
+                </div>
             }
 
             <GameBoard onClick={(indexOfBox) => this.onBoxClicked(indexOfBox)} gameBoard={this.state.gameBoard}/>
@@ -57,7 +57,7 @@ export class App extends React.Component {
 
     winningCombo(allBoxes) {
         return ((allBoxes[0] !== null && allBoxes[0] === allBoxes[1] && allBoxes[0] === allBoxes[2])
-             || (allBoxes[3] !== null && allBoxes[3] === allBoxes[4] && allBoxes[3] === allBoxes[5])
+            || (allBoxes[3] !== null && allBoxes[3] === allBoxes[4] && allBoxes[3] === allBoxes[5])
         );
     }
 }
