@@ -31,3 +31,7 @@ it('winning combo 7 - diagonal left to right', function () {
 it('winning combo 8 - diagonal right to left', function () {
     expect(getGameStatus(['O', 'O', 'X', null, 'X', null, 'X', null, null])).toEqual(GAME_STATUS.WON);
 });
+
+it('should return winning combo', function () {
+    expect(getWinningCombo(['O', 'O', 'X', null, 'X', null, 'X', null, null])).toEqual([2,4,6]);
+});
