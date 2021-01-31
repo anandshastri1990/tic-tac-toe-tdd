@@ -133,6 +133,14 @@ describe('Game board', () => {
     });
 });
 
+describe('Restart Game', () => {
+    it('should contain restart game button', function () {
+        const component = shallow(<App/>);
+
+        expect(component.find('#restart').text()).toEqual('Restart game');
+    });
+})
+
 describe('Game play', () => {
     it('should show winner as Player 1 when player 1 selects 3 boxes in first row', function () {
         const component = mount(<App/>);
