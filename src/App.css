@@ -138,3 +138,8 @@
 @keyframes blinker {
     50% { opacity: 0; }
 }
+
+.highlight-teal {
+    color: white;
+    background-color: teal ;
+}
