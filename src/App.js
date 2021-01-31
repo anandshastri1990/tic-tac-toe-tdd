@@ -29,6 +29,8 @@ export class App extends React.Component {
                     onClick={() => this.restartGame()}>Restart game
             </button>
 
+            <button id="undo">Undo a move</button>
+
         </div>
     }
 
