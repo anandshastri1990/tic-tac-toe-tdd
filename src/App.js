@@ -2,7 +2,12 @@ import './App.css';
 import React from "react";
 
 export class App extends React.Component {
-    state = {player1Name: "Player 1", player2Name: "Player 2", boxClicked: false, player1Turn: true}
+    state = {
+        player1Name: "Player 1",
+        player2Name: "Player 2",
+        player1Turn: true,
+        gameBoard: [null, null]
+    }
 
     render() {
         return <div>
@@ -25,8 +30,10 @@ export class App extends React.Component {
             </div>
 
             <div id="game-board">
-                <div id={"box-1"} onClick={() => this.onBoxClicked()}>{this.state.boxClicked ? 'X' : ''}</div>
-                <div id={"box-2"} onClick={() => this.onBoxClicked()}/>
+                <div id={"box-1"}
+                     onClick={() => this.onBoxClicked(0)}>{this.state.gameBoard[0]}</div>
+                <div id={"box-2"}
+                     onClick={() => this.onBoxClicked(1)}>{this.state.gameBoard[1]}</div>
                 <div id={"box-3"}/>
                 <div id={"box-4"}/>
                 <div id={"box-5"}/>
@@ -39,8 +46,10 @@ export class App extends React.Component {
         </div>
     }
 
-    onBoxClicked() {
-        this.setState((prevState) => ({boxClicked: true, player1Turn: !prevState.player1Turn}));
+    onBoxClicked(indexOfBox) {
+        let gameBoardShallow = [...this.state.gameBoard];
+        gameBoardShallow[indexOfBox] = this.state.player1Turn === true ? 'X' : 'O';
+        this.setState((prevState) => ({player1Turn: !prevState.player1Turn, gameBoard: gameBoardShallow}));
     }
 }
 
