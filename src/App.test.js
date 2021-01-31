@@ -134,6 +134,18 @@ describe('Undo a move', () => {
         expect(component.find('#box-2').text()).toEqual('');
     });
 
+    it('should undo player\'s turn on clicking undo', function () {
+        const component = mount(<App/>);
+
+        selectBoxes(component, [1, 4, 2]);
+
+        expect(component.find('#turn').text()).toContain('Player 2\'s turn');
+
+        component.find('#undo').simulate('click');
+
+        expect(component.find('#turn').text()).toContain('Player 1\'s turn');
+    });
+
     it('should undo player\'s selection twice when clicked on undo twice', function () {
         const component = mount(<App/>);
 
