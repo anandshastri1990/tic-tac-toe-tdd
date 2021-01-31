@@ -30,11 +30,12 @@ export class App extends React.Component {
                        player1Turn={!this.state.player1Turn}/>
 
             <div className="center mt-8">
-                <span className="button column center mr-5">
+                <span id={"restart-wrapper"}
+                    onClick={() => this.restartGame()}
+                    className="button column center mr-5">
                     <span id="restart-icon"><ArrowClockwise/></span>
                     <span id="restart"
-                          className="ml-1"
-                          onClick={() => this.restartGame()}>Restart game
+                          className="ml-1">Restart game
                     </span>
                 </span>
 
