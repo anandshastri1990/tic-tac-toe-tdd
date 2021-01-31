@@ -139,6 +139,18 @@ describe('Restart Game', () => {
 
         expect(component.find('#restart').text()).toEqual('Restart game');
     });
+
+    it('should reset all boxes when clicked on restart game button', () => {
+        const component = mount(<App/>);
+
+        selectBoxes(component, [2, 1, 4, 8, 5, 6, 7, 3, 9]);
+
+        component.find('#restart').simulate('click');
+
+        for (let i = 1; i <= 9; i++) {
+            expect(component.find('#box-' + i).text()).toEqual('');
+        }
+    });
 })
 
 describe('Game play', () => {
