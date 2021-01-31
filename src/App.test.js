@@ -139,7 +139,17 @@ describe('Game play', () => {
 
         expect(component.find('#winner')).toHaveLength(0);
 
-        selectBoxes(component, [1,4,7,5,3,6]);
+        selectBoxes(component, [1, 4, 7, 5, 3, 6]);
+
+        expect(component.find('#winner').text().trim()).toEqual('Player 2 won!')
+    });
+
+    it('should show winner as Player 2 when player 2 selects 3 boxes in first row', function () {
+        const component = mount(<App/>);
+
+        expect(component.find('#winner')).toHaveLength(0);
+
+        selectBoxes(component, [4, 1, 5, 2, 7, 3]);
 
         expect(component.find('#winner').text().trim()).toEqual('Player 2 won!')
     });
