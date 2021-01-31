@@ -86,13 +86,13 @@ describe('Game board', () => {
 
 describe('Restart Game', () => {
     it('should contain restart game button', function () {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         expect(component.find('#restart').text()).toEqual('Restart game');
     });
 
     it('should contain a restart icon', function () {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         expect(component.find('#restart-icon')).toHaveLength(1);
     });
@@ -124,13 +124,13 @@ describe('Restart Game', () => {
 
 describe('Undo a move', () => {
     it('should contain undo a move button', function () {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         expect(component.find('#undo').text()).toEqual('Undo a move');
     });
 
     it('should contain a undo icon', function () {
-        const component = shallow(<App/>);
+        const component = mount(<App/>);
 
         expect(component.find('#undo-icon')).toHaveLength(1);
     });

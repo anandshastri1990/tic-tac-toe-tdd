@@ -60,7 +60,7 @@
     padding: 15px;
     font-size: 1em;
     outline: none;
-    width: min(10vw, 150px);
+    width: 200px;
     text-decoration: underline;
     background: teal;
     color: white;

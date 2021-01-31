@@ -3,7 +3,7 @@ import React from "react";
 import {GameBoard} from "./GameBoard";
 import {GAME_STATUS, getGameStatus, getWinningCombo, PLAYER1_TOKEN, PLAYER2_TOKEN} from "./GameManager";
 import {PlayerInfo} from "./PlayerInfo";
-import {ArrowClockwise, ArrowLeftCircle} from "react-bootstrap-icons"
+import {ControlPanel} from "./ControlPanel";
 
 export class App extends React.Component {
     state = this.initState();
@@ -29,26 +29,8 @@ export class App extends React.Component {
                        winningCombo={getWinningCombo(this.state.gameBoard)}
                        player1Turn={!this.state.player1Turn}/>
 
-            <div className="center mt-8">
-                <span id={"restart-wrapper"}
-                    onClick={() => this.restartGame()}
-                    className="button column center mr-5">
-                    <span id="restart-icon"><ArrowClockwise/></span>
-                    <span id="restart"
-                          className="ml-1">Restart game
-                    </span>
-                </span>
-
-                <span id={"undo-wrapper"}
-                    onClick={() => this.undoAMove()}
-                      className="button column center">
-                    <span id="undo-icon"><ArrowLeftCircle/></span>
-                     <span id="undo"
-                           className="ml-1">
-                         Undo a move
-                    </span>
-                </span>
-            </div>
+            <ControlPanel restartGame={() => this.restartGame()}
+                          undoAMove={() => this.undoAMove()}/>
         </div>
     }
 
