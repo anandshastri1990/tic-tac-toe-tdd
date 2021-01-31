@@ -43,6 +43,7 @@ export class App extends React.Component {
     restartGame() {
         this.setState({
             gameBoard: [null, null, null, null, null, null, null, null, null],
+            player1Turn: true,
         })
     }
 
