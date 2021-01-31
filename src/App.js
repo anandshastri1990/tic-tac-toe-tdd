@@ -6,7 +6,7 @@ export class App extends React.Component {
         player1Name: "Player 1",
         player2Name: "Player 2",
         player1Turn: true,
-        gameBoard: [null, null]
+        gameBoard: [null, null, null, null, null, null, null, null, null]
     }
 
     render() {
@@ -30,17 +30,15 @@ export class App extends React.Component {
             </div>
 
             <div id="game-board">
-                <div id={"box-1"}
-                     onClick={() => this.onBoxClicked(0)}>{this.state.gameBoard[0]}</div>
-                <div id={"box-2"}
-                     onClick={() => this.onBoxClicked(1)}>{this.state.gameBoard[1]}</div>
-                <div id={"box-3"}/>
-                <div id={"box-4"}/>
-                <div id={"box-5"}/>
-                <div id={"box-6"}/>
-                <div id={"box-7"}/>
-                <div id={"box-8"}/>
-                <div id={"box-9"}/>
+                <div id={"box-1"} onClick={() => this.onBoxClicked(0)}>{this.state.gameBoard[0]}</div>
+                <div id={"box-2"} onClick={() => this.onBoxClicked(1)}>{this.state.gameBoard[1]}</div>
+                <div id={"box-3"} onClick={() => this.onBoxClicked(2)}>{this.state.gameBoard[2]}</div>
+                <div id={"box-4"} onClick={() => this.onBoxClicked(3)}>{this.state.gameBoard[3]}</div>
+                <div id={"box-5"} onClick={() => this.onBoxClicked(4)}>{this.state.gameBoard[4]}</div>
+                <div id={"box-6"} onClick={() => this.onBoxClicked(5)}>{this.state.gameBoard[5]}</div>
+                <div id={"box-7"} onClick={() => this.onBoxClicked(6)}>{this.state.gameBoard[6]}</div>
+                <div id={"box-8"} onClick={() => this.onBoxClicked(7)}>{this.state.gameBoard[7]}</div>
+                <div id={"box-9"} onClick={() => this.onBoxClicked(8)}>{this.state.gameBoard[8]}</div>
             </div>
 
         </div>
