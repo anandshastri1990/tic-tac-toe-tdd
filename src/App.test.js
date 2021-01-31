@@ -140,7 +140,7 @@ describe('Undo a move', () => {
 
         selectBoxes(component, [1, 4, 2]);
 
-        component.find('#undo').simulate('click');
+        component.find('#undo-wrapper').simulate('click');
 
         expect(component.find('#box-1').text()).toEqual('X');
         expect(component.find('#box-4').text()).toEqual('O');
@@ -154,7 +154,7 @@ describe('Undo a move', () => {
 
         expect(component.find('#turn').text()).toContain('Player 2\'s turn');
 
-        component.find('#undo').simulate('click');
+        component.find('#undo-wrapper').simulate('click');
 
         expect(component.find('#turn').text()).toContain('Player 1\'s turn');
     });
@@ -164,8 +164,8 @@ describe('Undo a move', () => {
 
         selectBoxes(component, [1, 4, 2]);
 
-        component.find('#undo').simulate('click');
-        component.find('#undo').simulate('click');
+        component.find('#undo-wrapper').simulate('click');
+        component.find('#undo-wrapper').simulate('click');
 
         expect(component.find('#box-1').text()).toEqual('X');
         expect(component.find('#box-4').text()).toEqual('');
@@ -179,7 +179,7 @@ describe('Undo a move', () => {
 
         expect(component.find('#turn').text()).toContain('Player 2\'s turn');
 
-        component.find('#undo').simulate('click');
+        component.find('#undo-wrapper').simulate('click');
 
         expect(component.find('#turn').text()).toContain('Player 1\'s turn');
         expect(component.find('#box-1').text()).toEqual('');
@@ -188,7 +188,7 @@ describe('Undo a move', () => {
     it('should ignore undo a move when clicked before any box selection', function () {
         const component = mount(<App/>);
 
-        component.find('#undo').simulate('click');
+        component.find('#undo-wrapper').simulate('click');
 
         expect(component.find('#box-1').text()).toEqual('');
     });
@@ -201,7 +201,7 @@ describe('Undo a move', () => {
         expect(component.find('#turn')).toHaveLength(0);
         expect(component.find('#winner')).toHaveLength(1);
 
-        component.find('#undo').simulate('click');
+        component.find('#undo-wrapper').simulate('click');
 
         expect(component.find('#turn').text()).toContain('Player 1\'s turn');
         expect(component.find('#winner')).toHaveLength(0);
@@ -215,7 +215,7 @@ describe('Undo a move', () => {
         expect(component.find('#turn')).toHaveLength(0);
         expect(component.find('#tie')).toHaveLength(1);
 
-        component.find('#undo').simulate('click');
+        component.find('#undo-wrapper').simulate('click');
 
         expect(component.find('#turn').text()).toContain('Player 1\'s turn');
         expect(component.find('#tie')).toHaveLength(0);
