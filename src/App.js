@@ -31,7 +31,11 @@ export class App extends React.Component {
                 {this.state.player1Turn ? (this.state.player1Name + "'s turn") : (this.state.player2Name + "'s turn")}
             </div>
 
-            {this.state.showWinner ? <div id={"winner"}>{this.state.player1Name +" won!"}</div>: <div/>}
+            {this.state.showWinner ?
+                <div
+                    id={"winner"}> {(this.state.player1Turn ? this.state.player2Name : this.state.player1Name) + " won!"}
+                </div> : <div/>
+            }
 
             <GameBoard onClick={(indexOfBox) => this.onBoxClicked(indexOfBox)} gameBoard={this.state.gameBoard}/>
 
@@ -52,7 +56,8 @@ export class App extends React.Component {
     }
 
     winningCombo(allBoxes) {
-        return (allBoxes[0] === 'X' && allBoxes[1] === 'X' && allBoxes[2] === 'X');
+        return ((allBoxes[0] === 'X' && allBoxes[1] === 'X' && allBoxes[2] === 'X')
+            || (allBoxes[3] === 'O' && allBoxes[4] === 'O' && allBoxes[5] === 'O'));
     }
 }
 
