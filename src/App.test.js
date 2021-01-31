@@ -64,12 +64,22 @@ describe('Game board', () => {
         }
     });
 
-    it('should show X mark when clicked on a box', () => {
+    it('should show X mark when player 1 selects first box', () => {
         const component = shallow(<App/>);
         expect(component.find('#game-board').find('#box-1').text()).not.toEqual('X');
 
         component.find('#game-board').find('#box-1').simulate('click');
 
         expect(component.find('#game-board').find('#box-1').text()).toEqual('X');
-    })
+    });
+
+    it('should show O mark when player 2 selects first box', function () {
+        const component = shallow(<App/>);
+        expect(component.find('#game-board').find('#box-2').text()).not.toEqual('X');
+
+        component.find('#game-board').find('#box-1').simulate('click');
+        component.find('#game-board').find('#box-2').simulate('click');
+
+        expect(component.find('#game-board').find('#box-2').text()).toEqual('O');
+    });
 });
