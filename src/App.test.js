@@ -82,4 +82,13 @@ describe('Game board', () => {
 
         expect(component.find('#game-board').find('#box-2').text()).toEqual('O');
     });
+
+    it('should not switch player\'s token when clicked on the same box twice', function () {
+        const component = shallow(<App/>);
+
+        component.find('#game-board').find('#box-1').simulate('click');
+        component.find('#game-board').find('#box-1').simulate('click');
+
+        expect(component.find('#game-board').find('#box-1').text()).toEqual('X');
+    });
 });
