@@ -2,21 +2,28 @@ import React from "react";
 import './App.css';
 
 export function GameBoard(props) {
- return <div id="game-board" className="row ma">
+    let box = (boxId) => {
+        return <div id={"box-" + (boxId + 1)}
+                    className={"box" + (props.winningCombo && props.winningCombo.includes(boxId) ? ' highlight' : '')}
+                    onClick={() => props.onClick(boxId)}>{props.gameBoard[boxId]}
+        </div>
+    }
+
+    return <div id="game-board" className="row ma">
         <div id={"row-1"} className="row">
-            <div id={"box-1"} className="box" onClick={() => props.onClick(0)}>{props.gameBoard[0]}</div>
-            <div id={"box-2"} className="box" onClick={() => props.onClick(1)}>{props.gameBoard[1]}</div>
-            <div id={"box-3"} className="box" onClick={() => props.onClick(2)}>{props.gameBoard[2]}</div>
+            {box(0)}
+            {box(1)}
+            {box(2)}
         </div>
         <div id={"row-2"} className="row">
-            <div id={"box-4"} className="box" onClick={() => props.onClick(3)}>{props.gameBoard[3]}</div>
-            <div id={"box-5"} className="box" onClick={() => props.onClick(4)}>{props.gameBoard[4]}</div>
-            <div id={"box-6"} className="box" onClick={() => props.onClick(5)}>{props.gameBoard[5]}</div>
+            {box(3)}
+            {box(4)}
+            {box(5)}
         </div>
         <div id={"row-3"} className="row">
-            <div id={"box-7"} className="box" onClick={() => props.onClick(6)}>{props.gameBoard[6]}</div>
-            <div id={"box-8"} className="box" onClick={() => props.onClick(7)}>{props.gameBoard[7]}</div>
-            <div id={"box-9"} className="box" onClick={() => props.onClick(8)}>{props.gameBoard[8]}</div>
+            {box(6)}
+            {box(7)}
+            {box(8)}
         </div>
     </div>
 }
