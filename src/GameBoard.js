@@ -4,7 +4,9 @@ import './App.css';
 export function GameBoard(props) {
     let box = (boxId) => {
         return <div id={"box-" + (boxId + 1)}
-                    className={"box" + (props.winningCombo && props.winningCombo.includes(boxId) ? ' highlight-teal' : '')}
+                    className={"box" + (props.winningCombo && props.winningCombo.includes(boxId) ?
+                        props.player1Turn ? ' highlight-teal' : ' highlight-red'
+                    : '')}
                     onClick={() => props.onClick(boxId)}>{props.gameBoard[boxId]}
         </div>
     }
