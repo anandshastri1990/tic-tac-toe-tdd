@@ -57,8 +57,7 @@ describe('Player name', () => {
     it('should not switch player\'s turn when clicked on the same box twice', function () {
         const component = mount(<App/>);
 
-        component.find('#game-board').find('#box-2').simulate('click');
-        component.find('#game-board').find('#box-2').simulate('click');
+        selectBoxes(component, [2, 2])
 
         expect(component.find('#turn').text()).toContain('Player 2\'s turn');
     });
@@ -91,7 +90,7 @@ describe('Game board', () => {
         const component = mount(<App/>);
         expect(component.find('#game-board').find('#box-1').text()).not.toEqual('X');
 
-        component.find('#game-board').find('#box-1').simulate('click');
+        selectBoxes(component, [1]);
 
         expect(component.find('#game-board').find('#box-1').text()).toEqual('X');
     });
@@ -100,8 +99,7 @@ describe('Game board', () => {
         const component = mount(<App/>);
         expect(component.find('#game-board').find('#box-2').text()).not.toEqual('X');
 
-        component.find('#game-board').find('#box-1').simulate('click');
-        component.find('#game-board').find('#box-2').simulate('click');
+        selectBoxes(component, [1, 2]);
 
         expect(component.find('#game-board').find('#box-2').text()).toEqual('O');
     });
@@ -109,8 +107,7 @@ describe('Game board', () => {
     it('should not switch player\'s token when clicked on the same box twice', function () {
         const component = mount(<App/>);
 
-        component.find('#game-board').find('#box-1').simulate('click');
-        component.find('#game-board').find('#box-1').simulate('click');
+        selectBoxes(component, [1, 1])
 
         expect(component.find('#game-board').find('#box-1').text()).toEqual('X');
     });
@@ -118,12 +115,10 @@ describe('Game board', () => {
     it('should alternate between player\'s token when clicked on different boxes', function () {
         const component = mount(<App/>);
 
-        for (let i = 1; i <= 9; i++) {
-            component.find('#game-board').find('#box-' + i).simulate('click');
-        }
+        selectAllBoxes(component);
 
         for (let i = 1; i <= 9; i++) {
-            expect(component.find('#game-board').find('#box-' + i).text()).toEqual(i % 2 === 1 ?'X' : 'O');
+            expect(component.find('#game-board').find('#box-' + i).text()).toEqual(i % 2 === 1 ? 'X' : 'O');
         }
     });
 });
@@ -134,12 +129,30 @@ describe('Game play', () => {
 
         expect(component.find('#winner')).toHaveLength(0);
 
-        component.find('#box-1').simulate('click');
-        component.find('#box-4').simulate('click');
-        component.find('#box-2').simulate('click');
-        component.find('#box-5').simulate('click');
-        component.find('#box-3').simulate('click');
+        selectBoxes(component, [1, 4, 2, 5, 3]);
 
-        expect(component.find('#winner').text()).toEqual('Player 1 won!')
+        expect(component.find('#winner').text().trim()).toEqual('Player 1 won!')
+    });
+
+    test('should show winner as Player 2 when player 2 selects 3 boxes in second row', () => {
+        const component = mount(<App/>);
+
+        expect(component.find('#winner')).toHaveLength(0);
+
+        selectBoxes(component, [1,4,7,5,3,6]);
+
+        expect(component.find('#winner').text().trim()).toEqual('Player 2 won!')
     });
 })
+
+let selectBoxes = (component, selectionArray) => {
+    selectionArray.forEach((selection) => {
+        component.find('#box-' + selection).simulate('click');
+    });
+}
+
+let selectAllBoxes = (component) => {
+    for (let i = 1; i <= 9; i++) {
+        component.find('#game-board').find('#box-' + i).simulate('click');
+    }
+}
