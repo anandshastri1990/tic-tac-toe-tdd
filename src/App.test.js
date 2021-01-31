@@ -163,6 +163,16 @@ describe('Game play', () => {
 
         expect(component.find('#winner').text().trim()).toEqual('Player 2 won!')
     });
+
+    it('should show game is tie message when all boxes are selected', function () {
+        const component = mount(<App/>);
+
+        expect(component.find('#winner')).toHaveLength(0);
+
+        selectBoxes(component, [2,1,4,8,5,6,7,3,9]);
+
+        expect(component.find('#tie').text().trim()).toEqual('It\'s a tie!')
+    });
 })
 
 let selectBoxes = (component, selectionArray) => {
