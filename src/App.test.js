@@ -87,14 +87,20 @@ describe('Game board', () => {
         expect(component.find('#game-board').find('#box-1').text()).toEqual('X');
     });
 
-    xit('should alternate between player\'s token when clicked on different boxes', function () {
+    it('should alternate between player\'s token when clicked on different boxes', function () {
         const component = mount(<App/>);
 
-        selectAllBoxes(component);
+        selectBoxes(component, [2,1,4,3,5,6,7,8,9]);
 
-        for (let i = 1; i <= 9; i++) {
-            expect(component.find('#game-board').find('#box-' + i).text()).toEqual(i % 2 === 1 ? 'X' : 'O');
-        }
+        expect(component.find('#game-board').find('#box-1').text()).toEqual('O');
+        expect(component.find('#game-board').find('#box-2').text()).toEqual('X');
+        expect(component.find('#game-board').find('#box-3').text()).toEqual('O');
+        expect(component.find('#game-board').find('#box-4').text()).toEqual('X');
+        expect(component.find('#game-board').find('#box-5').text()).toEqual('X');
+        expect(component.find('#game-board').find('#box-6').text()).toEqual('O');
+        expect(component.find('#game-board').find('#box-7').text()).toEqual('X');
+        expect(component.find('#game-board').find('#box-8').text()).toEqual('O');
+        expect(component.find('#game-board').find('#box-9').text()).toEqual('X');
     });
 });
 
@@ -186,10 +192,4 @@ let selectBoxes = (component, selectionArray) => {
     selectionArray.forEach((selection) => {
         component.find('#box-' + selection).simulate('click');
     });
-}
-
-let selectAllBoxes = (component) => {
-    for (let i = 1; i <= 9; i++) {
-        component.find('#game-board').find('#box-' + i).simulate('click');
-    }
 }
