@@ -5,10 +5,14 @@ import {GAME_STATUS, getGameStatus} from "./GameManager";
 import {PlayerInfo} from "./PlayerInfo";
 
 export class App extends React.Component {
-    state = {
-        player1Turn: true,
-        gameBoard: [null, null, null, null, null, null, null, null, null],
-        gameStatus: GAME_STATUS.IN_PROGRESS
+    state = this.initState();
+
+    initState() {
+        return {
+            gameBoard: [null, null, null, null, null, null, null, null, null],
+            player1Turn: true,
+            gameStatus: GAME_STATUS.IN_PROGRESS
+        }
     }
 
     render() {
@@ -22,7 +26,8 @@ export class App extends React.Component {
                        gameBoard={this.state.gameBoard}/>
 
             <button id="restart"
-                    onClick={() => this.restartGame()}>Restart game</button>
+                    onClick={() => this.restartGame()}>Restart game
+            </button>
 
         </div>
     }
@@ -41,11 +46,7 @@ export class App extends React.Component {
     }
 
     restartGame() {
-        this.setState({
-            gameBoard: [null, null, null, null, null, null, null, null, null],
-            player1Turn: true,
-            gameStatus: GAME_STATUS.IN_PROGRESS
-        })
+        this.setState(this.initState())
     }
 
 }

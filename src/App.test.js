@@ -162,7 +162,7 @@ describe('Restart Game', () => {
         }
     });
 
-    test('should not show game winner when game is reset', () => {
+    it('should not show game winner when game is reset', () => {
         const component = mount(<App/>);
 
         selectBoxes(component, [1, 3, 5, 6, 9]);
