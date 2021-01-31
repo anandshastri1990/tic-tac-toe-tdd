@@ -33,7 +33,7 @@ export class App extends React.Component {
     }
 
     onBoxClicked(indexOfBox) {
-        if (this.state.gameBoard[indexOfBox] === null) {
+        if (this.state.gameBoard[indexOfBox] === null && this.state.gameStatus === GAME_STATUS.IN_PROGRESS) {
             let gameBoardShallow = [...this.state.gameBoard];
             gameBoardShallow[indexOfBox] = this.state.player1Turn === true ? 'X' : 'O';
             this.setState((prevState) => (

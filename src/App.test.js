@@ -87,7 +87,7 @@ describe('Game board', () => {
         expect(component.find('#game-board').find('#box-1').text()).toEqual('X');
     });
 
-    it('should alternate between player\'s token when clicked on different boxes', function () {
+    xit('should alternate between player\'s token when clicked on different boxes', function () {
         const component = mount(<App/>);
 
         selectAllBoxes(component);
