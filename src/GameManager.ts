@@ -7,5 +7,6 @@ export function isWinningCombo(allBoxes): boolean {
         || (allBoxes[1] !== null && allBoxes[1] === allBoxes[4] && allBoxes[1] === allBoxes[7])
         || (allBoxes[2] !== null && allBoxes[2] === allBoxes[5] && allBoxes[2] === allBoxes[8])
         || (allBoxes[0] !== null && allBoxes[0] === allBoxes[4] && allBoxes[0] === allBoxes[8])
+        || (allBoxes[2] !== null && allBoxes[2] === allBoxes[4] && allBoxes[2] === allBoxes[6])
     );
 }
