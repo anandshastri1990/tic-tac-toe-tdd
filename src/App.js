@@ -3,7 +3,7 @@ import React from "react";
 import {GameBoard} from "./GameBoard";
 import {GAME_STATUS, getGameStatus, PLAYER1_TOKEN, PLAYER2_TOKEN} from "./GameManager";
 import {PlayerInfo} from "./PlayerInfo";
-import {ArrowClockwise} from "react-bootstrap-icons"
+import {ArrowClockwise, ArrowLeftCircle} from "react-bootstrap-icons"
 
 export class App extends React.Component {
     state = this.initState();
@@ -36,9 +36,12 @@ export class App extends React.Component {
                     </span>
                 </span>
 
-                <span id="undo"
-                      className="button column"
-                      onClick={() => this.undoAMove()}>Undo a move
+                <span className="button column center">
+                    <span id="undo-icon"><ArrowLeftCircle/></span>
+                     <span id="undo"
+                           className="ml-1"
+                           onClick={() => this.undoAMove()}>Undo a move
+                    </span>
                 </span>
             </div>
         </div>
