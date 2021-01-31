@@ -11,7 +11,8 @@ export class App extends React.Component {
         return {
             gameBoard: [null, null, null, null, null, null, null, null, null],
             player1Turn: true,
-            gameStatus: GAME_STATUS.IN_PROGRESS
+            gameStatus: GAME_STATUS.IN_PROGRESS,
+            prevGameBoard: null
         }
     }
 
@@ -29,7 +30,9 @@ export class App extends React.Component {
                     onClick={() => this.restartGame()}>Restart game
             </button>
 
-            <button id="undo">Undo a move</button>
+            <button id="undo"
+                    onClick={() => this.undoAMove()}>Undo a move
+            </button>
 
         </div>
     }
@@ -42,13 +45,20 @@ export class App extends React.Component {
                 {
                     player1Turn: !prevState.player1Turn,
                     gameBoard: gameBoardShallow,
-                    gameStatus: getGameStatus(gameBoardShallow)
+                    gameStatus: getGameStatus(gameBoardShallow),
+                    prevGameBoard: prevState.gameBoard
                 }));
         }
     }
 
     restartGame() {
         this.setState(this.initState())
+    }
+
+    undoAMove() {
+        this.setState( (prevState) => ({
+            gameBoard: prevState.prevGameBoard
+        }));
     }
 
 }
