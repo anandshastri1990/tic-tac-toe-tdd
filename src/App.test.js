@@ -127,3 +127,19 @@ describe('Game board', () => {
         }
     });
 });
+
+describe('Game play', () => {
+    it('should show winner as Player 1 when player 1 selects 3 boxes in first row', function () {
+        const component = mount(<App/>);
+
+        expect(component.find('#winner')).toHaveLength(0);
+
+        component.find('#box-1').simulate('click');
+        component.find('#box-4').simulate('click');
+        component.find('#box-2').simulate('click');
+        component.find('#box-5').simulate('click');
+        component.find('#box-3').simulate('click');
+
+        expect(component.find('#winner').text()).toEqual('Player 1 won!')
+    });
+})
