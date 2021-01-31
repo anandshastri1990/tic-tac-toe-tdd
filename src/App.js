@@ -1,7 +1,7 @@
 import './App.css';
 import React from "react";
 import {GameBoard} from "./GameBoard";
-import {GAME_STATUS, getGameStatus, PLAYER1_TOKEN, PLAYER2_TOKEN} from "./GameManager";
+import {GAME_STATUS, getGameStatus, getWinningCombo, PLAYER1_TOKEN, PLAYER2_TOKEN} from "./GameManager";
 import {PlayerInfo} from "./PlayerInfo";
 import {ArrowClockwise, ArrowLeftCircle} from "react-bootstrap-icons"
 
@@ -10,7 +10,7 @@ export class App extends React.Component {
 
     initState() {
         return {
-            gameBoard: [null, null, null, null, null, null, null, null, null],
+            gameBoard: Array(9).fill(null),
             player1Turn: true,
             gameStatus: GAME_STATUS.IN_PROGRESS,
             prevGameBoards: []
@@ -25,7 +25,9 @@ export class App extends React.Component {
                         player1Turn={this.state.player1Turn}/>
 
             <GameBoard onClick={(indexOfBox) => this.onBoxClicked(indexOfBox)}
-                       gameBoard={this.state.gameBoard}/>
+                       gameBoard={this.state.gameBoard}
+                       winningCombo={getWinningCombo(this.state.gameBoard)}
+                       player1Turn={!this.state.player1Turn}/>
 
             <div className="center mt-8">
                 <span className="button column center mr-5">
