@@ -34,7 +34,7 @@ describe('Player name', () => {
 
         selectBoxes(component, [2]);
 
-        component.find('#restart').simulate('click');
+        component.find('#restart-wrapper').simulate('click');
 
         expect(component.find('#turn').text()).toContain('Player 1\'s turn');
     });
@@ -102,7 +102,7 @@ describe('Restart Game', () => {
 
         selectBoxes(component, [2, 1, 4, 8, 5, 6, 7, 3, 9]);
 
-        component.find('#restart').simulate('click');
+        component.find('#restart-wrapper').simulate('click');
 
         for (let i = 1; i <= 9; i++) {
             expect(component.find('#box-' + i).text()).toEqual('');
@@ -116,7 +116,7 @@ describe('Restart Game', () => {
 
         expect(component.find('#winner')).toHaveLength(1);
 
-        component.find('#restart').simulate('click');
+        component.find('#restart-wrapper').simulate('click');
 
         expect(component.find('#winner')).toHaveLength(0);
     });
