@@ -1,7 +1,7 @@
 import './App.css';
 import React from "react";
 import {GameBoard} from "./GameBoard";
-import {isWinningCombo} from "./GameManager";
+import {GAME_STATUS, getGameStatus} from "./GameManager";
 
 export class App extends React.Component {
     state = {
@@ -9,7 +9,7 @@ export class App extends React.Component {
         player2Name: "Player 2",
         player1Turn: true,
         gameBoard: [null, null, null, null, null, null, null, null, null],
-        showWinner: false
+        gameStatus: GAME_STATUS.IN_PROGRESS
     }
 
     render() {
@@ -28,14 +28,15 @@ export class App extends React.Component {
                        this.setState({player2Name: $event.target.value})
                    }}/>
 
-            {this.state.showWinner ?
+            {this.state.gameStatus === GAME_STATUS.WON ?
                 <div
                     id={"winner"}> {(this.state.player1Turn ? this.state.player2Name : this.state.player1Name) + " won!"}
                 </div>
-                :
-                <div id={"turn"}>
-                    {this.state.player1Turn ? (this.state.player1Name + "'s turn") : (this.state.player2Name + "'s turn")}
-                </div>
+                : this.state.gameStatus === GAME_STATUS.TIE ?
+                    <div id={"tie"}>It's a tie!</div> :
+                    <div id={"turn"}>
+                        {this.state.player1Turn ? (this.state.player1Name + "'s turn") : (this.state.player2Name + "'s turn")}
+                    </div>
             }
 
             <GameBoard onClick={(indexOfBox) => this.onBoxClicked(indexOfBox)} gameBoard={this.state.gameBoard}/>
@@ -51,7 +52,7 @@ export class App extends React.Component {
                 {
                     player1Turn: !prevState.player1Turn,
                     gameBoard: gameBoardShallow,
-                    showWinner: isWinningCombo(gameBoardShallow)
+                    gameStatus: getGameStatus(gameBoardShallow)
                 }));
         }
     }
