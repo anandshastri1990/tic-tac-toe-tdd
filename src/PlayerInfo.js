@@ -22,12 +22,11 @@ export function PlayerInfo(props) {
 
         <div className="mt-4 mb-4">{
             props.gameStatus === GAME_STATUS.WON ?
-                <div
-                    id={"winner"}> {(props.player1Turn ? player2Name : player1Name) + " won!"}
+                <div id={"winner"} className="game-result"> {(props.player1Turn ? player2Name : player1Name) + " won!"}
                 </div>
                 : props.gameStatus === GAME_STATUS.TIE ?
-                <div id={"tie"}>It's a tie!</div> :
-                <div id={"turn"}>
+                <div id={"tie"} className="game-result">It's a tie!</div> :
+                <div id={"turn"} className="player-instruction">
                     {props.player1Turn ? (player1Name + "'s turn") : (player2Name + "'s turn")}
                 </div>
         }

@@ -59,7 +59,9 @@
     border: 0;
     padding: 15px;
     font-size: 1em;
+    outline: none;
     width: min(10vw, 150px);
+    text-decoration: underline;
 }
 
 .button {
@@ -96,4 +98,14 @@
     font-size: min(5vmax, 75px);
     float: left;
     background-color: white;
+}
+
+.game-result {
+    font-size: min(5vmax, 65px);
+    height: 75px;
+}
+
+.player-instruction {
+    font-size: min(4vmax, 45px);
+    height: 75px;
 }
