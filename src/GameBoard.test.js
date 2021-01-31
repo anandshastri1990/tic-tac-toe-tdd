@@ -39,4 +39,19 @@ describe('Game board', () => {
         expect(component.find('#game-board').find('#box-9').text()).toContain('X');
     });
 
+    it('should highlight given boxes', function () {
+        const component = shallow(<GameBoard
+            gameBoard={['X', 'O', null, 'O', 'X', null, 'X', 'O', 'X']}
+            winningCombo={[0,4,8]}/>);
+
+        expect(component.find('#game-board').find('#box-1').get(0).props.className).toEqual('box highlight');
+        expect(component.find('#game-board').find('#box-2').get(0).props.className).toEqual('box');
+        expect(component.find('#game-board').find('#box-3').get(0).props.className).toEqual('box');
+        expect(component.find('#game-board').find('#box-4').get(0).props.className).toEqual('box');
+        expect(component.find('#game-board').find('#box-5').get(0).props.className).toEqual('box highlight');
+        expect(component.find('#game-board').find('#box-6').get(0).props.className).toEqual('box');
+        expect(component.find('#game-board').find('#box-7').get(0).props.className).toEqual('box');
+        expect(component.find('#game-board').find('#box-8').get(0).props.className).toEqual('box');
+        expect(component.find('#game-board').find('#box-9').get(0).props.className).toEqual('box highlight');
+    });
 });
