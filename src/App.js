@@ -38,11 +38,13 @@ export class App extends React.Component {
                     </span>
                 </span>
 
-                <span className="button column center">
+                <span id={"undo-wrapper"}
+                    onClick={() => this.undoAMove()}
+                      className="button column center">
                     <span id="undo-icon"><ArrowLeftCircle/></span>
                      <span id="undo"
-                           className="ml-1"
-                           onClick={() => this.undoAMove()}>Undo a move
+                           className="ml-1">
+                         Undo a move
                     </span>
                 </span>
             </div>
