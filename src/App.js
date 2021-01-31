@@ -12,7 +12,7 @@ export class App extends React.Component {
             gameBoard: [null, null, null, null, null, null, null, null, null],
             player1Turn: true,
             gameStatus: GAME_STATUS.IN_PROGRESS,
-            prevGameBoard: null
+            prevGameBoards: []
         }
     }
 
@@ -46,7 +46,7 @@ export class App extends React.Component {
                     player1Turn: !prevState.player1Turn,
                     gameBoard: gameBoardShallow,
                     gameStatus: getGameStatus(gameBoardShallow),
-                    prevGameBoard: prevState.gameBoard
+                    prevGameBoards: [...prevState.prevGameBoards, prevState.gameBoard]
                 }));
         }
     }
@@ -57,7 +57,8 @@ export class App extends React.Component {
 
     undoAMove() {
         this.setState( (prevState) => ({
-            gameBoard: prevState.prevGameBoard
+            gameBoard: prevState.prevGameBoards[prevState.prevGameBoards.length - 1],
+            prevGameBoards: prevState.prevGameBoards.slice(0,prevState.prevGameBoards.length - 1)
         }));
     }
 
