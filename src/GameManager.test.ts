@@ -11,3 +11,7 @@ it('winning combo 2 - 2nd row', function () {
 it('winning combo 3 - 3nd row', function () {
     expect(isWinningCombo([null, null, null, 'O', 'O', null, 'X', 'X', 'X'])).toEqual(true);
 });
+
+it('winning combo 4 - 1st column', function () {
+    expect(isWinningCombo(['X', null, 'O', 'X', 'O', null, 'X', null, null])).toEqual(true);
+});
