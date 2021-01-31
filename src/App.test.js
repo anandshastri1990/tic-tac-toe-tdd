@@ -100,4 +100,16 @@ describe('Game board', () => {
 
         expect(component.find('#game-board').find('#box-1').text()).toEqual('X');
     });
+
+    it('should alternate between player\'s token when clicked on different boxes', function () {
+        const component = shallow(<App/>);
+
+        for (let i = 1; i <= 9; i++) {
+            component.find('#game-board').find('#box-' + i).simulate('click');
+        }
+
+        for (let i = 1; i <= 9; i++) {
+            expect(component.find('#game-board').find('#box-' + i).text()).toEqual(i % 2 === 1 ?'X' : 'O');
+        }
+    });
 });
