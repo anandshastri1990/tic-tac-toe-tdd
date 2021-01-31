@@ -21,6 +21,8 @@ export class App extends React.Component {
             <GameBoard onClick={(indexOfBox) => this.onBoxClicked(indexOfBox)}
                        gameBoard={this.state.gameBoard}/>
 
+            <button id="restart">Restart game</button>
+
         </div>
     }
 
