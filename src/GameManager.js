@@ -19,6 +19,10 @@ export function getGameStatus(allBoxes) {
     }
 }
 
+export function getWinningCombo(allBoxes) {
+    return [2,4,6];
+}
+
 export const GAME_STATUS = {
     IN_PROGRESS: 0, WON: 1, TIE: 2
 }

@@ -1,4 +1,4 @@
-import {GAME_STATUS, getGameStatus} from "./GameManager";
+import {GAME_STATUS, getGameStatus, getWinningCombo} from "./GameManager";
 
 it('winning combo 1 - 1st row', function () {
     expect(getGameStatus(['X', 'X', 'X', 'O', 'O'])).toEqual(GAME_STATUS.WON);
