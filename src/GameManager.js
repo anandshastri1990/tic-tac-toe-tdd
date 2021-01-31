@@ -1,16 +1,5 @@
 export function getGameStatus(allBoxes) {
-    let gameWon = (
-           (allBoxes[0] !== null && allBoxes[0] === allBoxes[1] && allBoxes[0] === allBoxes[2])
-        || (allBoxes[3] !== null && allBoxes[3] === allBoxes[4] && allBoxes[3] === allBoxes[5])
-        || (allBoxes[6] !== null && allBoxes[6] === allBoxes[7] && allBoxes[6] === allBoxes[8])
-        || (allBoxes[0] !== null && allBoxes[0] === allBoxes[3] && allBoxes[0] === allBoxes[6])
-        || (allBoxes[1] !== null && allBoxes[1] === allBoxes[4] && allBoxes[1] === allBoxes[7])
-        || (allBoxes[2] !== null && allBoxes[2] === allBoxes[5] && allBoxes[2] === allBoxes[8])
-        || (allBoxes[0] !== null && allBoxes[0] === allBoxes[4] && allBoxes[0] === allBoxes[8])
-        || (allBoxes[2] !== null && allBoxes[2] === allBoxes[4] && allBoxes[2] === allBoxes[6])
-    );
-
-    if (gameWon) {
+    if (getWinningCombo(allBoxes)) {
         return GAME_STATUS.WON;
     } else if (allBoxes.filter((box) => box === null).length === 0) {
         return GAME_STATUS.TIE;
@@ -20,7 +9,24 @@ export function getGameStatus(allBoxes) {
 }
 
 export function getWinningCombo(allBoxes) {
-    return [2,4,6];
+    const winningCombos = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+    for (let i = 0; i < winningCombos.length; i++) {
+        const [a, b, c] = winningCombos[i];
+        if (allBoxes[a] !== null && allBoxes[a] === allBoxes[b] && allBoxes[a] === allBoxes[c]) {
+            return [a,b,c];
+        }
+    }
+
+    return null;
 }
 
 export const GAME_STATUS = {
