@@ -3,6 +3,7 @@ import React from "react";
 import {GameBoard} from "./GameBoard";
 import {GAME_STATUS, getGameStatus, PLAYER1_TOKEN, PLAYER2_TOKEN} from "./GameManager";
 import {PlayerInfo} from "./PlayerInfo";
+import {ArrowClockwise} from "react-bootstrap-icons"
 
 export class App extends React.Component {
     state = this.initState();
@@ -27,9 +28,12 @@ export class App extends React.Component {
                        gameBoard={this.state.gameBoard}/>
 
             <div className="center mt-8">
-                <span id="restart"
-                      className="button column mr-5"
-                      onClick={() => this.restartGame()}>Restart game
+                <span className="button column center mr-5">
+                    <span id="restart-icon"><ArrowClockwise/></span>
+                    <span id="restart"
+                          className="ml-1"
+                          onClick={() => this.restartGame()}>Restart game
+                    </span>
                 </span>
 
                 <span id="undo"
@@ -59,10 +63,10 @@ export class App extends React.Component {
     }
 
     undoAMove() {
-        if (this.state.gameBoard.filter( (box) => box !== null).length > 0) {
-            this.setState( (prevState) => ({
+        if (this.state.gameBoard.filter((box) => box !== null).length > 0) {
+            this.setState((prevState) => ({
                 gameBoard: prevState.prevGameBoards[prevState.prevGameBoards.length - 1],
-                prevGameBoards: prevState.prevGameBoards.slice(0,prevState.prevGameBoards.length - 1),
+                prevGameBoards: prevState.prevGameBoards.slice(0, prevState.prevGameBoards.length - 1),
                 player1Turn: !prevState.player1Turn,
                 gameStatus: GAME_STATUS.IN_PROGRESS
             }));

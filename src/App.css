@@ -44,6 +44,10 @@
     margin-right: 5vw;
 }
 
+.ml-1{
+    margin-left: 1vh;
+}
+
 .ma {
     margin: auto;
     text-align: center;
