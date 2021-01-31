@@ -71,6 +71,16 @@ describe('Player name', () => {
 
         expect(component.find('#turn')).toHaveLength(0);
     });
+
+    it('should show player 1 turn when game is reset', () => {
+        const component = mount(<App/>);
+
+        selectBoxes(component, [2]);
+
+        component.find('#restart').simulate('click');
+
+        expect(component.find('#turn').text()).toContain('Player 1\'s turn');
+    });
 })
 
 describe('Game board', () => {
