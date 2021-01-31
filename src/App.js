@@ -58,7 +58,8 @@ export class App extends React.Component {
     undoAMove() {
         this.setState( (prevState) => ({
             gameBoard: prevState.prevGameBoards[prevState.prevGameBoards.length - 1],
-            prevGameBoards: prevState.prevGameBoards.slice(0,prevState.prevGameBoards.length - 1)
+            prevGameBoards: prevState.prevGameBoards.slice(0,prevState.prevGameBoards.length - 1),
+            player1Turn: !prevState.player1Turn
         }));
     }
 
